@@ -88,15 +88,20 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 flex max-w-2xl flex-col items-start gap-7">
 
-        {/* Eyebrow */}
-        <motion.p
+        {/* Name */}
+        <motion.div
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="font-mono text-xs tracking-[0.2em] text-white/25 uppercase"
+          className="flex flex-col gap-0.5"
         >
-          Gourav Garg — Software Engineer
-        </motion.p>
+          <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+            Gourav Garg
+          </h2>
+          <p className="font-mono text-xs tracking-[0.18em] text-white/35 uppercase">
+            Software Engineer
+          </p>
+        </motion.div>
 
         {/* Headline with 3D tilt */}
         <motion.div
@@ -112,7 +117,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.25, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="text-5xl font-semibold leading-[1.08] tracking-tight text-white sm:text-6xl lg:text-[4.5rem]"
+            className="text-4xl font-semibold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-[3.75rem]"
           >
             The engineer behind
             <br />
