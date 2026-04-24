@@ -41,21 +41,12 @@ const EXPERIENCE = {
   ],
 };
 
-const EDUCATION = {
-  institution: "BITS Pilani",
-  degree: "MTech in Software Engineering",
-  period: "2024 – 2026",
-  coursework: ["DevOps", "Scalable Services", "Software Architecture", "OSS"],
-};
-
 export default function Experience() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
-  const eduRef = useRef(null);
-  const eduInView = useInView(eduRef, { once: true, margin: "-80px" });
 
   return (
-    <section className="relative mx-auto max-w-2xl px-6 py-28">
+    <section className="relative mx-auto max-w-3xl px-6 py-28">
       {/* Section label */}
       <motion.p
         initial={{ opacity: 0 }}
@@ -92,18 +83,18 @@ export default function Experience() {
           {/* Tracks */}
           <div className="mt-5 flex flex-col gap-6">
             {EXPERIENCE.tracks.map((track) => (
-              <div key={track.name} className="relative pl-4 border-l border-white/[0.07]">
+              <div key={track.name} className="relative pl-4">
                 {/* Track name + badge + period */}
                 <div className="mb-2 flex flex-wrap items-center gap-2">
                   <p className="font-mono text-[11px] tracking-wide text-white/30 uppercase">
                     {track.name}
                   </p>
-                  {track.badge && (
+                  {track?.badge && (
                     <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 font-mono text-[10px] text-emerald-400">
-                      {track.badge}
+                      {track?.badge}
                     </span>
                   )}
-                  <span className="font-mono text-[10px] text-white/20">{track.period}</span>
+                  <span className="font-mono text-[10px] text-white/20">{track?.period}</span>
                 </div>
 
                 {track.description && (
@@ -139,35 +130,6 @@ export default function Experience() {
           </div>
         </motion.div>
 
-        {/* Education node */}
-        <motion.div
-          ref={eduRef}
-          initial={{ opacity: 0, x: -20 }}
-          animate={eduInView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="relative pl-8"
-        >
-          <div className="absolute left-0 top-1.5 h-2.5 w-2.5 rounded-full border border-blue-400/50 bg-blue-500/20" />
-
-          <div className="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between">
-            <div>
-              <h3 className="text-lg font-semibold text-white">{EDUCATION.institution}</h3>
-              <p className="text-sm font-medium text-blue-300/70">{EDUCATION.degree}</p>
-            </div>
-            <span className="shrink-0 font-mono text-xs text-white/30">{EDUCATION.period}</span>
-          </div>
-
-          <div className="mt-3 flex flex-wrap gap-2">
-            {EDUCATION.coursework.map((c) => (
-              <span
-                key={c}
-                className="rounded-md border border-white/[0.07] bg-white/[0.03] px-2.5 py-0.5 font-mono text-[11px] text-white/35"
-              >
-                {c}
-              </span>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );
