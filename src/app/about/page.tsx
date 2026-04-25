@@ -1,6 +1,5 @@
 import Education from "@/components/Education";
 import Skills from "@/components/Skills";
-import Navbar from "@/components/Navbar";
 
 export const metadata = {
   title: "About — Gourav Garg",
@@ -9,7 +8,6 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <main className="min-h-screen" style={{ background: "#080810" }}>
-      <Navbar />
 
       {/* Hero */}
       <section className="relative mx-auto max-w-3xl px-6 pt-36 pb-10">

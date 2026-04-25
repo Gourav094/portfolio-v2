@@ -2,6 +2,7 @@
 
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { useRef } from "react";
 
 const LINKS = [
@@ -11,6 +12,8 @@ const LINKS = [
   { label: "Contact", href: "#contact" },
   { label: "Resume",  href: "#resume" },
 ];
+
+const MotionLink = motion(Link);
 
 function MagneticLink({
   link,
@@ -41,7 +44,7 @@ function MagneticLink({
   };
 
   return (
-    <motion.a
+    <MotionLink
       ref={ref}
       href={link.href}
       initial={{ opacity: 0, y: -10 }}
@@ -59,7 +62,7 @@ function MagneticLink({
       }}>
         {link.label}
       </span>
-    </motion.a>
+    </MotionLink>
   );
 }
 

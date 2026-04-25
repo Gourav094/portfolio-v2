@@ -277,7 +277,7 @@ export default function Skills() {
               {/* Category label */}
               <div className="w-24 shrink-0 text-right">
                 <span
-                  className="font-mono text-[11px] tracking-widest uppercase"
+                  className="font-mono text-[13px] tracking-widest uppercase"
                   style={{ color: group.color, opacity: 0.7 }}
                 >
                   {group.category}
