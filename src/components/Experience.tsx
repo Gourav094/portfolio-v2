@@ -46,7 +46,7 @@ export default function Experience() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="relative mx-auto max-w-3xl px-6 py-28">
+    <section className="relative mx-auto max-w-3xl px-6 py-24">
       {/* Section label */}
       <motion.p
         initial={{ opacity: 0 }}
@@ -60,7 +60,7 @@ export default function Experience() {
 
       <div className="relative flex flex-col gap-12">
         {/* Timeline line */}
-        <div className="absolute left-[4px] top-2 h-full w-px bg-gradient-to-b from-violet-500/30 via-white/10 to-transparent" />
+        <div className="absolute left-1 top-2 h-full w-px bg-linear-to-b from-violet-500/30 via-white/10 to-transparent" />
 
         {/* SAP Labs entry */}
         <motion.div
@@ -86,25 +86,25 @@ export default function Experience() {
               <div key={track.name} className="relative pl-4">
                 {/* Track name + badge + period */}
                 <div className="mb-2 flex flex-wrap items-center gap-2">
-                  <p className="font-mono text-[11px] tracking-wide text-white/30 uppercase">
+                  <p className="font-mono text-[13px] tracking-wide text-white/40 uppercase">
                     {track.name}
                   </p>
-                  {track?.badge && (
+                  {/* {track?.badge && (
                     <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 font-mono text-[10px] text-emerald-400">
                       {track?.badge}
                     </span>
-                  )}
-                  <span className="font-mono text-[10px] text-white/20">{track?.period}</span>
+                  )} */}
+                  {/* <span className="font-mono text-[10px] text-white/20">{track?.period}</span> */}
                 </div>
 
                 {track.description && (
-                  <p className="mb-3 text-sm italic text-white/35">{track.description}</p>
+                  <p className="mb-3 text-sm italic text-white/30">{track.description}</p>
                 )}
 
                 {track.points.length > 0 && (
                   <ul className="flex flex-col gap-2">
                     {track.points.map((pt, i) => (
-                      <li key={i} className="flex gap-2.5 text-sm leading-relaxed text-white/50">
+                      <li key={i} className="flex gap-2.5 text-sm leading-relaxed text-white/30">
                         <span className="mt-[0.45em] h-1 w-1 shrink-0 rounded-full bg-white/20" />
                         {pt}
                       </li>
@@ -118,7 +118,7 @@ export default function Experience() {
                     {track.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-md border border-white/[0.06] bg-white/[0.03] px-2 py-0.5 font-mono text-[10px] text-white/30"
+                        className="rounded-md border border-white/6 bg-white/3 px-2 py-0.5 font-mono text-[10px] text-white/30"
                       >
                         {tag}
                       </span>

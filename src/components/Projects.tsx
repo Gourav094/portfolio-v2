@@ -100,7 +100,7 @@ function FeaturedCard({ project, index }: { project: typeof PROJECTS[0]; index: 
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         style={{ rotateX, rotateY, transformPerspective: 1000, transformStyle: "preserve-3d" }}
-        className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-white/[0.08] bg-[#0e0e1a] p-8 cursor-default"
+        className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-white/8 bg-[#0e0e1a] p-8 cursor-default"
       >
         {/* Moving spotlight */}
         <motion.div
@@ -206,7 +206,7 @@ export default function Projects() {
       </motion.p>
 
       {/* Side by side */}
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-10 sm:grid-cols-2">
         {PROJECTS.map((p, i) => (
           <FeaturedCard key={p.id} project={p} index={i} />
         ))}

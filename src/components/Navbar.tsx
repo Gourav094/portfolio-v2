@@ -3,14 +3,14 @@
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const LINKS = [
   { label: "Home",    href: "/" },
   { label: "About",   href: "/about" },
-  { label: "Blog",    href: "#blog" },
   { label: "Contact", href: "#contact" },
-  { label: "Resume",  href: "#resume" },
+  { label: "Blog",    href: "https://medium.com/@garggourav012" },
+  { label: "Resume",  href: "https://drive.google.com/file/d/1sRM0keFjY73KyyhYgBhcC-fi1YK3zIxA/view" },
 ];
 
 const MotionLink = motion(Link);
@@ -47,6 +47,8 @@ function MagneticLink({
     <MotionLink
       ref={ref}
       href={link.href}
+      target={link.href.startsWith("http") ? "_blank" : undefined}
+      rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.3 + index * 0.07, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -68,6 +70,13 @@ function MagneticLink({
 
 export default function Navbar() {
   const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 150);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const getActive = () => {
     if (pathname === "/about") return "About";
@@ -78,7 +87,10 @@ export default function Navbar() {
   const active = getActive();
 
   return (
-    <nav className="fixed top-0 right-0 z-50 flex items-center gap-10 px-12 py-7">
+    <nav
+      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-end gap-10 px-12 py-7 transition-colors duration-300"
+      style={{ background: scrolled ? "#080810" : "transparent" }}
+    >
       {LINKS.map((link, i) => (
         <MagneticLink
           key={link.label}

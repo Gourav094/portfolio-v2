@@ -25,8 +25,8 @@ export default function Hero() {
   const headlineRef = useRef<HTMLDivElement>(null);
   const rotateX = useMotionValue(0);
   const rotateY = useMotionValue(0);
-  const springRotX = useSpring(rotateX, { stiffness: 120, damping: 25 });
-  const springRotY = useSpring(rotateY, { stiffness: 120, damping: 25 });
+  const springRotX = useSpring(rotateX, { stiffness: 120, damping: 10 });
+  const springRotY = useSpring(rotateY, { stiffness: 120, damping: 10 });
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -95,10 +95,10 @@ export default function Hero() {
           transition={{ duration: 0.5 }}
           className="flex flex-col gap-0.5"
         >
-          <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+          <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-2xl">
             Gourav Garg
           </h2>
-          <p className="font-mono text-xs tracking-[0.18em] text-white/35 uppercase">
+          <p className="font-mono text-xs tracking-[0.18em] text-white/40 uppercase pt-1">
             Software Engineer
           </p>
         </motion.div>
