@@ -1,11 +1,12 @@
 "use client";
 
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useRef } from "react";
 
 const LINKS = [
   { label: "Home",    href: "/" },
-  { label: "About",   href: "#about" },
+  { label: "About",   href: "/about" },
   { label: "Blog",    href: "#blog" },
   { label: "Contact", href: "#contact" },
   { label: "Resume",  href: "#resume" },
@@ -30,10 +31,8 @@ function MagneticLink({
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
-    const cx = rect.left + rect.width / 2;
-    const cy = rect.top + rect.height / 2;
-    rawX.set((e.clientX - cx) * 0.35);
-    rawY.set((e.clientY - cy) * 0.35);
+    rawX.set((e.clientX - (rect.left + rect.width / 2)) * 0.35);
+    rawY.set((e.clientY - (rect.top + rect.height / 2)) * 0.35);
   };
 
   const handleMouseLeave = () => {
@@ -47,23 +46,17 @@ function MagneticLink({
       href={link.href}
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{
-        delay: 0.3 + index * 0.07,
-        duration: 0.6,
-        ease: [0.22, 1, 0.36, 1],
-      }}
+      transition={{ delay: 0.3 + index * 0.07, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       style={{ x, y }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="text-[16px] font-medium select-none cursor-pointer"
+      className="relative text-[16px] font-medium select-none cursor-pointer"
     >
-      <span
-        style={{
-          color: isActive ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.32)",
-          transition: "color 0.2s",
-          display: "block",
-        }}
-      >
+      <span style={{
+        color: isActive ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.32)",
+        transition: "color 0.2s",
+        display: "block",
+      }}>
         {link.label}
       </span>
     </motion.a>
@@ -71,25 +64,15 @@ function MagneticLink({
 }
 
 export default function Navbar() {
-  const [active, setActive] = useState("Home");
+  const pathname = usePathname();
 
-  useEffect(() => {
-    const onScroll = () => {
-      if (window.scrollY < 100) { setActive("Home"); return; }
-      for (const id of ["about", "blog", "contact", "resume"]) {
-        const el = document.getElementById(id);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= 120 && rect.bottom >= 120) {
-            setActive(id.charAt(0).toUpperCase() + id.slice(1));
-            return;
-          }
-        }
-      }
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const getActive = () => {
+    if (pathname === "/about") return "About";
+    if (pathname === "/blog") return "Blog";
+    return "Home";
+  };
+
+  const active = getActive();
 
   return (
     <nav className="fixed top-0 right-0 z-50 flex items-center gap-10 px-12 py-7">

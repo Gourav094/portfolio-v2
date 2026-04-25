@@ -169,10 +169,10 @@ export default function Hero() {
           className="flex flex-wrap items-center gap-5 pt-1"
         >
           <a
-            href="mailto:gouravgarg.dev@gmail.com"
+            href="#projects"
             className="group relative flex items-center gap-2 overflow-hidden rounded-full bg-white px-6 py-2.5 text-sm font-medium text-black transition-all duration-200 hover:shadow-[0_0_40px_rgba(139,92,246,0.25)]"
           >
-            <span className="relative z-10">Say hello</span>
+            <span className="relative z-10">View projects</span>
             <svg
               className="relative z-10 h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
               viewBox="0 0 14 14"
