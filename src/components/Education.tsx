@@ -33,7 +33,7 @@ export default function Education() {
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section ref={ref} className="relative mx-auto max-w-3xl px-6 py-20">
+    <section ref={ref} className="relative mx-auto max-w-5xl px-6 py-20">
       <motion.p
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
