@@ -77,12 +77,12 @@ const ResumeIconOutline = () => (
 const LINKS = [
   { label: "Work",    href: "/", iconFilled: WorkIconFilled, iconOutline: WorkIconOutline },
   { label: "About",   href: "/about", iconFilled: AboutIconFilled, iconOutline: AboutIconOutline },
-  { label: "Contact", href: "#contact", iconFilled: ContactIconFilled, iconOutline: ContactIconOutline },
+  // { label: "Contact", href: "#contact", iconFilled: ContactIconFilled, iconOutline: ContactIconOutline },
   { label: "Blog",    href: "https://medium.com/@garggourav012", iconFilled: BlogIconFilled, iconOutline: BlogIconOutline },
   { label: "Resume",  href: "https://drive.google.com/file/d/1sRM0keFjY73KyyhYgBhcC-fi1YK3zIxA/view", iconFilled: ResumeIconFilled, iconOutline: ResumeIconOutline },
 ];
 
-const MotionLink = motion(Link);
+const MotionLink = motion.create(Link);
 
 function MagneticLink({
   link,

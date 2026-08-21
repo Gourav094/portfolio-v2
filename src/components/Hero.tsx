@@ -3,11 +3,40 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useEffect, useRef } from "react";
 
+const GitHubIcon = () => (
+  <svg viewBox="0 0 20 20" className="h-3.5 w-3.5" fill="currentColor" aria-hidden="true">
+    <path
+      fillRule="evenodd"
+      d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.745 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z"
+      clipRule="evenodd"
+    />
+  </svg>
+);
+
+const LinkedInIcon = () => (
+  <svg viewBox="0 0 30 30" className="h-3.5 w-3.5" fill="currentColor" aria-hidden="true">
+    <path d="M24,4H6C4.895,4,4,4.895,4,6v18c0,1.105,0.895,2,2,2h18c1.105,0,2-0.895,2-2V6C26,4.895,25.105,4,24,4z M10.954,22h-2.95 v-9.492h2.95V22z M9.449,11.151c-0.951,0-1.72-0.771-1.72-1.72c0-0.949,0.77-1.719,1.72-1.719c0.948,0,1.719,0.771,1.719,1.719 C11.168,10.38,10.397,11.151,9.449,11.151z M22.004,22h-2.948v-4.616c0-1.101-0.02-2.517-1.533-2.517 c-1.535,0-1.771,1.199-1.771,2.437V22h-2.948v-9.492h2.83v1.297h0.04c0.394-0.746,1.356-1.533,2.791-1.533 c2.987,0,3.539,1.966,3.539,4.522V22z"></path>
+  </svg>
+
+);
+
+const MediumIcon = () => (
+  <svg viewBox="0 0 20 20" className="h-3.5 w-3.5" fill="currentColor" aria-hidden="true">
+    <path d="M11.08 10c0 2.818-2.268 5.103-5.066 5.103S.948 12.818.948 10 3.216 4.897 6.014 4.897 11.08 7.182 11.08 10zm5.534 0c0 2.65-1.134 4.8-2.533 4.8-1.4 0-2.533-2.15-2.533-4.8s1.133-4.8 2.533-4.8c1.4 0 2.533 2.15 2.533 4.8zm2.44 0c0 2.374-.398 4.3-.89 4.3-.49 0-.889-1.926-.889-4.3s.398-4.3.89-4.3c.49 0 .889 1.926.889 4.3z" />
+  </svg>
+);
+
+const LeetCodeIcon = () => (
+  <svg viewBox="0 0 25 25" className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true">
+    <path d="m15.42 16.94-2.25 2.17a2.1 2.1 0 0 1-1.52.56 2.1 2.1 0 0 1-1.52-.56l-3.61-3.63a2.18 2.18 0 0 1-.58-1.55 2.07 2.07 0 0 1 .58-1.52l3.6-3.65a2.1 2.1 0 0 1 1.53-.54 2.08 2.08 0 0 1 1.52.55l2.25 2.17A1.14 1.14 0 0 0 17 9.33l-2.17-2.2a4.24 4.24 0 0 0-2-1.12l2.06-2.08a1.15 1.15 0 0 0-1.62-1.62l-8.43 8.42a4.48 4.48 0 0 0-1.24 3.2 4.57 4.57 0 0 0 1.24 3.23l3.63 3.63A4.38 4.38 0 0 0 11.66 22a4.45 4.45 0 0 0 3.2-1.25L17 18.56a1.14 1.14 0 0 0-1.61-1.62z" /><path d="M19.34 12.84h-8.45a1.12 1.12 0 0 0 0 2.24h8.45a1.12 1.12 0 0 0 0-2.24" />
+  </svg>
+);
+
 const LINKS = [
-  { label: "GitHub", href: "https://github.com/" },
-  { label: "LinkedIn", href: "https://linkedin.com/in/" },
-  { label: "Medium", href: "https://medium.com/" },
-  { label: "LeetCode", href: "https://leetcode.com/" },
+  { label: "GitHub", href: "https://github.com/", icon: <GitHubIcon /> },
+  { label: "LinkedIn", href: "https://linkedin.com/in/", icon: <LinkedInIcon /> },
+  { label: "Medium", href: "https://medium.com/", icon: <MediumIcon /> },
+  { label: "LeetCode", href: "https://leetcode.com/", icon: <LeetCodeIcon /> },
 ];
 
 const PILLS = [
@@ -195,8 +224,9 @@ export default function Hero() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-white/30 transition-colors duration-150 hover:text-white/70"
+                className="flex items-center gap-1.5 text-sm text-white/30 transition-colors duration-150 hover:text-white/70"
               >
+                {link.icon}
                 {link.label}
               </a>
             ))}
